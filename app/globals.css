@@ -3,16 +3,84 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg-size: 400%;
+  --color-one: hsl(15 90% 55%);
+  --color-two: hsl(40 95% 55%);
+  --bg-color: rgb(20, 20, 20);
+  --card-color: rgb(23,23,23);
+}
+
+.button{
+  display: inline-block;
+  padding: 7px 20px 7px 20px;
+  border-radius: 25px;
+  color: black;
+  background: linear-gradient(
+      90deg,
+      var(--color-one),
+      var(--color-two)
+    );
+  margin-top: 50px;
+  font-size: 1.5rem;
+  align-self: center;
+  cursor: pointer;
+}
+.boujee-text {    
+  background: linear-gradient(
+      90deg,
+      var(--color-one),
+      var(--color-two),
+      var(--color-one)
+    )
+    0 0 / var(--bg-size) 100%;
+  color: transparent;
+  background-clip: text;
+}
+.contact-wall{
+  transform:rotatey(7deg);
+}
+.circular-text {
+  fill: currentColor;
+  height: auto;
+  max-width: 10vmin;
+  transform-origin: center;
+  width: 100%;
+  animation: spin 6s linear infinite;
+}
+
+.fancy-container{
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.1),
+    transparent 50%
+);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .boujee-text {
+    animation: move-bg 6s linear infinite;
+  }
+  @keyframes move-bg {
+    to {
+      background-position: var(--bg-size) 0;
+      
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
@@ -24,4 +92,51 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.nav-button {
+  vertical-align: top;
+  background:
+    linear-gradient(
+      to right,
+      rgb(0, 0, 0),
+      rgb(0, 0, 0)
+    ),
+    linear-gradient(
+      to right,
+      rgb(255, 165, 0),
+      rgb(211, 84, 0),
+      rgba(192, 58, 43, 0.963)
+  );
+  background-size: 110% 1px, 0 2px;
+  background-position: 110% 110%, 0 100%;
+  background-repeat: no-repeat;
+  transition: all 400ms ease-in-out;
+}
+
+.nav-button-link {
+  transition: all 400ms ease-in-out;
+}
+
+.nav-button:hover {
+  background-size: 0 3px, 110% 3px;
+}
+
+.nav-button:hover > .nav-button-link {
+  transition: all 400ms ease-in-out;
+  translate:0px -2px;
+}
+.bg-color-black {
+  background-color: black;
+}
+
+.border-transparent {
+  border: 1px solid rgba(255, 255, 255, 0.451);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+.custom-drop{
+  box-shadow:  25px 25px 62px #a4a4a4,
+             -25px -25px 62px #ffffff;
 }
